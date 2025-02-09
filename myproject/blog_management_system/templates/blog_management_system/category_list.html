@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Posts in {{ category.name }}</title>
+</head>
+<body>
+    <h1>Category: {{ category.name }}</h1>
+    
+    <a href="{% url 'home' %}">Back to Home</a>
+
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a> 
+                <a href="{% url 'post_update' post.pk %}">Edit</a> 
+                <a href="{% url 'post_delete' post.pk %}">Delete</a>
+            </li>
+        {% empty %}
+            <p>No posts in this category yet.</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>
